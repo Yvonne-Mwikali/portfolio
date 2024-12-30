@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Facebook, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { FaWhatsapp } from "react-icons/fa6";
 import { toast } from "react-toastify";
@@ -12,6 +12,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Textarea } from "../components/ui/text-area";
+import emailjs from "@emailjs/browser";
+
+const credentials = {
+  serviceId: process.env.REACT_APP_SERVICE_ID,
+  publicKey: process.env.REACT_APP_PUBLIC_KEY,
+  templateId: process.env.REACT_APP_TEMPLATE_ID,
+};
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -26,13 +33,14 @@ const formSchema = z.object({
   service: z.string({
     required_error: "Please select a service.",
   }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
+  message: z.string().min(5, {
+    message: "Message must be at least 5 characters.",
   }),
 });
 
 export function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,15 +53,23 @@ export function ContactUs() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
+    if (!credentials.serviceId || !credentials.templateId)
+      return toast("Service ID is missing. Please contact the site owner.");
+    if (!formRef.current) return;
+    console.log(formRef.current);
+
     // Simulate form submission
-    setTimeout(() => {
-      console.log(values);
-      setIsSubmitting(false);
-      form.reset();
-      toast("Form submitted successfully!");
-    }, 2000);
+    const response = await emailjs.sendForm(credentials.serviceId, credentials.templateId, formRef?.current, {
+      publicKey: credentials.publicKey,
+    });
+    if (response.status !== 200) {
+      return toast.error("Failed to send email. Please try again later.");
+    }
+    form.reset(); // Reset form fields
+    setIsSubmitting(false);
+    toast.success("Message sent successfully!");
   }
 
   return (
@@ -80,7 +96,7 @@ export function ContactUs() {
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <FormField
                     control={form.control}
                     name="name"
