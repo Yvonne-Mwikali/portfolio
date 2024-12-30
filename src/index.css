@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 249 56% 95%;
+    --foreground: 249 5% 10%;
+    --card: 249 50% 90%;
+    --card-foreground: 249 5% 15%;
+    --popover: 249 56% 95%;
+    --popover-foreground: 249 95% 10%;
+    --primary: 249 75% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 249 30% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 211 30% 85%;
+    --muted-foreground: 249 5% 35%;
+    --accent: 211 30% 80%;
+    --accent-foreground: 249 5% 15%;
+    --destructive: 0 56% 30%;
+    --destructive-foreground: 249 5% 90%;
+    --border: 249 30% 50%;
+    --input: 249 30% 22%;
+    --ring: 249 75% 34%;
+    --radius: 0.75rem;
+  }
+  .dark {
+    --background: 249 50% 10%;
+    --foreground: 249 5% 90%;
+    --card: 249 50% 10%;
+    --card-foreground: 249 5% 90%;
+    --popover: 249 50% 5%;
+    --popover-foreground: 249 5% 90%;
+    --primary: 249 75% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 249 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 211 30% 22%;
+    --muted-foreground: 249 5% 60%;
+    --accent: 211 30% 22%;
+    --accent-foreground: 249 5% 90%;
+    --destructive: 0 56% 30%;
+    --destructive-foreground: 249 5% 90%;
+    --border: 249 30% 22%;
+    --input: 249 30% 22%;
+    --ring: 249 75% 34%;
+    --radius: 0.75rem;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Poppins", sans-serif;
+  }
+}
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
