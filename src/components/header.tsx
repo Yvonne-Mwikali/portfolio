@@ -7,7 +7,7 @@ const navigation = ["home", "skills", "experience", "work", "contact"];
 const logo = "../logo.png";
 const logo2 = "../logo3.png";
 export function Header() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export function Header() {
           {theme === "dark" ? (
             <img src={logo} alt="personal logo" className="h-15 w-20 " />
           ) : (
-            <img src={logo2} alt="personal logo" className="h-15 w-20" />
+            <img src={logo2} alt="personal logo" className="h-20 w-30" />
           )}{" "}
           <Button variant="ghost" size="icon" onClick={closeDrawer}>
             <X className="h-6 w-6" />
