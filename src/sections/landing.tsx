@@ -6,7 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-const hero = "../hero.jpeg";
+const hero = "../hero.JPEG";
 
 export function Landing() {
   const [isHovered, setIsHovered] = useState(false);
