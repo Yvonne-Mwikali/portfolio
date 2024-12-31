@@ -1,9 +1,11 @@
+import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Facebook, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
-import { useState, useRef } from "react";
+import { Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaWhatsapp } from "react-icons/fa6";
+import { FiGithub } from "react-icons/fi";
 import { toast } from "react-toastify";
 import * as z from "zod";
 import { Button } from "../components/ui/button";
@@ -12,7 +14,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Textarea } from "../components/ui/text-area";
-import emailjs from "@emailjs/browser";
 
 const credentials = {
   serviceId: process.env.REACT_APP_SERVICE_ID,
@@ -55,8 +56,7 @@ export function ContactUs() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    if (!credentials.serviceId || !credentials.templateId)
-      return toast("Service ID is missing. Please contact the site owner.");
+    if (!credentials.serviceId || !credentials.templateId) return toast("Service ID is missing. Please contact the site owner.");
     if (!formRef.current) return;
     console.log(formRef.current);
 
@@ -82,17 +82,11 @@ export function ContactUs() {
     >
       <h1 className="text-3xl font-bold mb-8 text-center font-accent-foreground">Contact Me</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
           <Card className="bg-card">
             <CardHeader>
               <CardTitle>Get in Touch</CardTitle>
-              <CardDescription>
-                Fill out the form below and i&apos;ll get back to you as soon as possible.
-              </CardDescription>
+              <CardDescription>Fill out the form below and i&apos;ll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -172,11 +166,7 @@ export function ContactUs() {
                       </FormItem>
                     )}
                   />
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                    disabled={isSubmitting}
-                  >
+                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isSubmitting}>
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </Button>
                 </form>
@@ -184,11 +174,7 @@ export function ContactUs() {
             </CardContent>
           </Card>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
           <Card className="bg-card h-full">
             <CardHeader>
               <CardTitle>Contact Information</CardTitle>
@@ -220,7 +206,7 @@ export function ContactUs() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Facebook className="h-6 w-6" />
+                  <FiGithub className="h-6 w-6" />
                   <span className="sr-only">GitHub</span>
                 </motion.a>
                 <motion.a

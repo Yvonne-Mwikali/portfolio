@@ -1,5 +1,5 @@
 // Footer.tsx
-import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { NavHashLink } from "react-router-hash-link";
 
@@ -15,15 +15,15 @@ export function Footer() {
           <div>
             <h2 className="text-xl font-semibold ">About Me</h2>
             <p className="mt-4 text-sm">
-              I'm a passionate developer with experience in creating dynamic and user-friendly applications. I love
-              exploring new technologies and bringing ideas to life.
+              I'm a passionate developer with experience in creating dynamic and user-friendly applications. I love exploring new technologies and
+              bringing ideas to life.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h2 className="text-xl font-semibold ">Quick Links</h2>
-            {navigation.map((item) => (
+            {navigation.map(item => (
               <ul className="mt-4 space-y-2">
                 <li>
                   <NavHashLink to={`#${item}`} className="hover:underline">
@@ -47,16 +47,16 @@ export function Footer() {
               <li>Location: Beren, moi university</li>
               <li>
                 <div className="flex space-x-4 mt-2">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <FaInstagram className="w-5 h-5 hover:text-white" />
+                  <a href="https://wa.me/+254796808579" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <FaWhatsapp className="w-5 h-5 hover:text-white" />
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <a href="https://x.com/YvonneMwikali01" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                     <FaXTwitter className="w-5 h-5 hover:text-white" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/yvonne-mwikali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <FiLinkedin className="w-5 h-5 hover:text-white" />
                   </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a href="https://github.com/Yvonne-Mwikali" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <FiGithub className="w-5 h-5 hover:text-white" />
                   </a>
                 </div>

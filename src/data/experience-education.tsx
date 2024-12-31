@@ -19,7 +19,7 @@ export const timelineData: TimelineItem[] = [
     type: "experience",
     title: "Relationship Officer",
     organization: "Equity Bank",
-    period: "February 2023 – August 2023",
+    period: "February 2023 - August 2023",
     description:
       "Worked as a teller at Equity Bank, managing withdrawals and deposits with accuracy and efficiency. Opened accounts and provided exceptional customer care services. Supported elderly clients receiving Inua Jamii funds, ensuring smooth and respectful service.",
   },
@@ -29,8 +29,7 @@ export const timelineData: TimelineItem[] = [
     organization: "Moi University",
     period: "2023 - Present",
     description:
-      'Developing expertise in software development, UI/UX design, and problem-solving. Actively participating in tech communities, contributing to projects, and honing skills in React, TypeScript, Photoshop, and Figma. Balancing academic pursuits with practical experience in software and design projects.
-',
+      "Developing expertise in software development, UI/UX design, and problem-solving. Actively participating in tech communities, contributing to projects, and honing skills in React, TypeScript, Photoshop, and Figma. Balancing academic pursuits with practical experience in software and design projects.",
   },
   {
     type: "education",
