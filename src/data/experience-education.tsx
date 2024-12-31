@@ -29,7 +29,8 @@ export const timelineData: TimelineItem[] = [
     organization: "Moi University",
     period: "2023 - Present",
     description:
-      'Currently specializing in Artificial Intelligence and Machine Learning. Thesis on "Implementing AI in Web Applications".',
+      'Developing expertise in software development, UI/UX design, and problem-solving. Actively participating in tech communities, contributing to projects, and honing skills in React, TypeScript, Photoshop, and Figma. Balancing academic pursuits with practical experience in software and design projects.
+',
   },
   {
     type: "education",
@@ -37,6 +38,6 @@ export const timelineData: TimelineItem[] = [
     organization: "Tech Rise Academy",
     period: "2024 - Present",
     description:
-      "Foundations in software development, web development, and mobile apps. Developed a responsive web application for a virtual wallet using React, TypeScript, and Tailwind. Created a mobile app for landlords and tenants using React Native.",
+      "Foundations in software development, web development, and mobile apps. Developed a responsive web application for a virtual wallet using React, TypeScript, and Tailwind.",
   },
 ];
