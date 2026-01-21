@@ -32,7 +32,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-blue backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex-row flex h-14 items-center justify-between">
-        <a href="/#home" className="flex items-center space-x-2 ml-5 rounded-lg">
+        <a
+          href="/#home"
+          className="flex items-center space-x-2 ml-5 rounded-lg"
+        >
           {theme === "dark" ? (
             <img src={logo} alt="personal logo" className="h-15 w-20 " />
           ) : (
