@@ -9,10 +9,30 @@ import { FiGithub } from "react-icons/fi";
 import { toast } from "react-toastify";
 import * as z from "zod";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../components/ui/form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../components/ui/form";
 import { Input } from "../components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 import { Textarea } from "../components/ui/text-area";
 
 const credentials = {
@@ -56,14 +76,20 @@ export function ContactUs() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    if (!credentials.serviceId || !credentials.templateId) return toast("Service ID is missing. Please contact the site owner.");
+    if (!credentials.serviceId || !credentials.templateId)
+      return toast("Service ID is missing. Please contact the site owner.");
     if (!formRef.current) return;
     console.log(formRef.current);
 
     // Simulate form submission
-    const response = await emailjs.sendForm(credentials.serviceId, credentials.templateId, formRef?.current, {
-      publicKey: credentials.publicKey,
-    });
+    const response = await emailjs.sendForm(
+      credentials.serviceId,
+      credentials.templateId,
+      formRef?.current,
+      {
+        publicKey: credentials.publicKey,
+      },
+    );
     if (response.status !== 200) {
       return toast.error("Failed to send email. Please try again later.");
     }
@@ -80,17 +106,30 @@ export function ContactUs() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-3xl font-bold mb-8 text-center font-accent-foreground">Contact Me</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center font-accent-foreground">
+        Contact Me
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <Card className="bg-card">
             <CardHeader>
               <CardTitle>Get in Touch</CardTitle>
-              <CardDescription>Fill out the form below and i&apos;ll get back to you as soon as possible.</CardDescription>
+              <CardDescription>
+                Fill out the form below and i&apos;ll get back to you as soon as
+                possible.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <form
+                  ref={formRef}
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                >
                   <FormField
                     control={form.control}
                     name="name"
@@ -111,7 +150,11 @@ export function ContactUs() {
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="john@example.com" {...field} />
+                          <Input
+                            type="email"
+                            placeholder="john@example.com"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -124,7 +167,11 @@ export function ContactUs() {
                       <FormItem>
                         <FormLabel>Phone</FormLabel>
                         <FormControl>
-                          <Input type="tel" placeholder="+1234567890" {...field} />
+                          <Input
+                            type="tel"
+                            placeholder="+1234567890"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -136,17 +183,28 @@ export function ContactUs() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Service</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="branding">Branding</SelectItem>
-                            <SelectItem value="webdesign">Web Design</SelectItem>
-                            <SelectItem value="development">Development</SelectItem>
-                            <SelectItem value="marketing">Marketing</SelectItem>
+                            <SelectItem value="web-app-development">
+                              Web App Development
+                            </SelectItem>
+                            <SelectItem value="mobile-app-development">
+                              Mobile App Development (React Native)
+                            </SelectItem>
+                            <SelectItem value="ui-ux-design">
+                              UI/UX Design
+                            </SelectItem>
+                            <SelectItem value="api-backend">
+                              APIs & Backend (Node.js)
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -160,13 +218,20 @@ export function ContactUs() {
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Type your message here." {...field} />
+                          <Textarea
+                            placeholder="Type your message here."
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </Button>
                 </form>
@@ -174,11 +239,18 @@ export function ContactUs() {
             </CardContent>
           </Card>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <Card className="bg-card h-full">
             <CardHeader>
               <CardTitle>Contact Information</CardTitle>
-              <CardDescription>You can also reach out to me directly using the information below.</CardDescription>
+              <CardDescription>
+                You can also reach out to me directly using the information
+                below.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center  space-x-2 text-foreground">
@@ -187,7 +259,10 @@ export function ContactUs() {
               </div>
               <div className="flex items-center space-x-2 text-foreground">
                 <Mail className="h-5 w-5" />
-                <a href="mailto:yvonnemwikali162@gmail.com" className="hover:text-white hover:underline">
+                <a
+                  href="mailto:yvonnemwikali162@gmail.com"
+                  className="hover:text-white hover:underline"
+                >
                   yvonnemwikali162@gmail.com
                 </a>
               </div>

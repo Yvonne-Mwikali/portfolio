@@ -3,5 +3,7 @@ export * from "./testimonials";
 export * from "./experience-education";
 export * from "./works";
 export * from "./skills";
+export * from "./services";
+export * from "./achievements";
 export * from "./contact";
 export * from "./footer";

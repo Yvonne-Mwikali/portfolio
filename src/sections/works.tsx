@@ -1,23 +1,37 @@
 import { useState } from "react";
 import { Card, CardContent } from "../components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "../components/ui/dialog";
 import { ScrollArea } from "../components/ui/scroll-area";
 import { Toast, ToastProvider } from "../components/ui/toast";
 import { Button } from "../components/ui/button";
 import { ProjectInterface, projects } from "../data/projects";
+import { Link, useLocation } from "react-router-dom";
 
 const categories = ["all", "webs", "uiux", "graphics"];
 const PROJECTS_PER_PAGE = 8;
 
 export function WorkPage() {
+  const location = useLocation();
+  const isPortfolioPage = location.pathname === "/portfolio";
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedProject, setSelectedProject] = useState<ProjectInterface | null>(null);
-  const [toastProject, setToastProject] = useState<ProjectInterface | null>(null);
+  const [selectedProject, setSelectedProject] =
+    useState<ProjectInterface | null>(null);
+  const [toastProject, setToastProject] = useState<ProjectInterface | null>(
+    null,
+  );
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
 
   const filteredProjects =
-    selectedCategory === "all" ? projects : projects.filter((project) => project.category === selectedCategory);
+    selectedCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
 
@@ -60,7 +74,11 @@ export function WorkPage() {
             onClick={() => setSelectedProject(project)}
           >
             <CardContent className="p-0">
-              <img src={project.image} alt={project.title} className="w-full rounded-lg h-48 object-cover" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full rounded-lg h-48 object-cover"
+              />
               <div className="p-4 ">
                 <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
                 <p className="text-sm text-gray-600">{project.category}</p>
@@ -85,7 +103,21 @@ export function WorkPage() {
         </div>
       )}
 
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+      {!isPortfolioPage && (
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/portfolio"
+            className="text-blue-600 dark:text-blue-300 font-semibold hover:underline text-sm"
+          >
+            View full portfolio →
+          </Link>
+        </div>
+      )}
+
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={() => setSelectedProject(null)}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{selectedProject?.title}</DialogTitle>

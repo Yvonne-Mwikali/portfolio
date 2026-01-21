@@ -1,7 +1,6 @@
 // Footer.tsx
 import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { NavHashLink } from "react-router-hash-link";
 
 const navigation = ["home", "skills", "experience", "work", "contact"];
 
@@ -24,11 +23,11 @@ export function Footer() {
           <div>
             <h2 className="text-xl font-semibold ">Quick Links</h2>
             {navigation.map(item => (
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-4 space-y-2" key={item}>
                 <li>
-                  <NavHashLink to={`#${item}`} className="hover:underline">
+                  <a href={`/#${item}`} className="hover:underline">
                     {item}
-                  </NavHashLink>
+                  </a>
                 </li>
               </ul>
             ))}

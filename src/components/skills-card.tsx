@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 interface SkillCardProps {
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 export function SkillCard({ name, imageUrl }: SkillCardProps) {
@@ -15,12 +15,18 @@ export function SkillCard({ name, imageUrl }: SkillCardProps) {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="relative w-20 h-20 mb-4">
-        <img
-          src={imageUrl}
-          alt={name}
-          className="w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-110"
-        />
+      <div className="relative w-20 h-20 mb-4 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700">
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={name}
+            className="w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-110"
+          />
+        ) : (
+          <span className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+            {name[0]}
+          </span>
+        )}
       </div>
       <motion.p
         className="font-semibold text-sm text-gray-800 text-nowrap dark:text-gray-200"

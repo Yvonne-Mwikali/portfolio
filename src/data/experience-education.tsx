@@ -9,11 +9,11 @@ type TimelineItem = {
 export const timelineData: TimelineItem[] = [
   {
     type: "experience",
-    title: "Software Developer",
-    organization: "Beren Tech Limited",
+    title: "Fullstack Software Developer",
+    organization: "RentHub (Beren Tech Limited)",
     period: "2024 - Present",
     description:
-      "Directed marketing strategies and managed social media campaigns for the RentHub app, boosting brand visibility. Designed targeted content to engage users and attract new audiences. Analyzed metrics to optimize campaign performance and user engagement.",
+      "Building and shipping web/mobile experiences with React, Node.js, and Next.js—covering UI, APIs, and integrations for RentHub.",
   },
   {
     type: "experience",
@@ -33,10 +33,10 @@ export const timelineData: TimelineItem[] = [
   },
   {
     type: "education",
-    title: "Software Developer",
+    title: "Software Development",
     organization: "Tech Rise Academy",
-    period: "2024 - Present",
+    period: "2024 (Completed)",
     description:
-      "Foundations in software development, web development, and mobile apps. Developed a responsive web application for a virtual wallet using React, TypeScript, and Tailwind.",
+      "Completed fullstack fundamentals—React, TypeScript, Node.js, Tailwind, and mobile-first delivery—with a responsive virtual wallet project.",
   },
 ];

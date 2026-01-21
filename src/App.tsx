@@ -1,9 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import { Layout, MainPage } from "./pages";
+import { Layout, MainPage, PortfolioPage } from "./pages";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Layout />, children: [{ index: true, element: <MainPage /> }] },
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <MainPage /> },
+      { path: "portfolio", element: <PortfolioPage /> },
+    ],
+  },
 ]);
 
 function App() {

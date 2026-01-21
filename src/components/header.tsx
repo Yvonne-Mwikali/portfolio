@@ -2,6 +2,7 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { NavHashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 
 const navigation = ["home", "skills", "experience", "work", "contact"];
 const logo = "../logo.png";
@@ -31,7 +32,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-blue backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex-row flex h-14 items-center justify-between">
-        <a href="#home" className="flex items-center space-x-2 ml-5 rounded-lg">
+        <a href="/#home" className="flex items-center space-x-2 ml-5 rounded-lg">
           {theme === "dark" ? (
             <img src={logo} alt="personal logo" className="h-15 w-20 " />
           ) : (
@@ -40,24 +41,50 @@ export function Header() {
         </a>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navigation.map((nav) => (
-            <NavHashLink key={nav} to={`#${nav}`} className="transition-colors hover:text-primary">
+            <a
+              key={nav}
+              href={`/#${nav}`}
+              className="transition-colors hover:text-primary"
+            >
               {nav}
-            </NavHashLink>
+            </a>
           ))}
+          <Link
+            to="/portfolio"
+            className="transition-colors hover:text-primary"
+          >
+            portfolio
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">
-          <NavHashLink to="#contact" className="hidden sm:flex">
+          <a href="/#contact" className="hidden sm:flex">
             <Button variant="default" className="hidden sm:flex">
               Hire Me
             </Button>
-          </NavHashLink>
+          </a>
+          <Link to="/portfolio" className="hidden sm:flex">
+            <Button variant="outline">Portfolio</Button>
+          </Link>
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            {theme === "light" ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
             <span className="sr-only">Toggle theme</span>
           </Button>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleDrawer}>
-            {isDrawerOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={toggleDrawer}
+          >
+            {isDrawerOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
             <span className="sr-only">Toggle navigation</span>
           </Button>
         </div>
@@ -82,20 +109,27 @@ export function Header() {
         </div>
         <div className="flex flex-col space-y-6 py-2 px-4 text-center">
           {navigation.map((nav) => (
-            <NavHashLink
+            <a
               key={nav}
-              to={`#${nav}`}
+              href={`/#${nav}`}
               className="text-lg font-medium hover:text-primary"
               onClick={closeDrawer}
             >
               {nav}
-            </NavHashLink>
+            </a>
           ))}
-          <NavHashLink to="#contact" onClick={closeDrawer}>
+          <Link
+            to="/portfolio"
+            className="text-lg font-medium hover:text-primary"
+            onClick={closeDrawer}
+          >
+            portfolio
+          </Link>
+          <a href="/#contact" onClick={closeDrawer}>
             <Button variant="default" className="w-full">
               Hire Me
             </Button>
-          </NavHashLink>
+          </a>
         </div>
       </div>
     </header>
