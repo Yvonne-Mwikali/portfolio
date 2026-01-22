@@ -1,7 +1,7 @@
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
-import { NavHashLink } from "react-router-hash-link";
+// import { NavHashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
 const navigation = ["home", "skills", "experience", "work", "contact"];

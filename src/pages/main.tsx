@@ -4,7 +4,7 @@ import {
   Landing,
   Services,
   SkillsPage,
-  TestimonialPage,
+  // TestimonialPage,
   WorkPage,
 } from "../sections";
 // import { Achievements } from "../sections";

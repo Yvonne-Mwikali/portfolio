@@ -3,8 +3,8 @@ import ReactNative from "../images/native.png";
 import Javascript from "../images/javascriptimage.png";
 import Typescript from "../images/typescriptimage.png";
 import React from "../images/reactimage.png";
-import PhotoShop from "../images/psimage.png";
-import Html from "../images/htmlcssimage.png";
+// import PhotoShop from "../images/psimage.png";
+// import Html from "../images/htmlcssimage.png";
 import tailwind from "../images/tailwindimage.png";
 
 export type SkillCardItem = {
